@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Download ClawChampion</title>
+  <meta name="description" content="Smart download link for ClawChampion." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="icon" href="/assets/favicon.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Back to Home">
+        <img src="/assets/favicon.jpg" alt="ClawChampion logo" />
+        <span>CLAWCHAMPION</span>
+      </a>
+      <a class="btn ghost" href="/">Home</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h2>Download ClawChampion</h2>
+      <p>This page detects your device and takes you to the correct store. If auto-redirect doesn’t happen, use the buttons below.</p>
+
+      <div class="panel">
+        <div class="cta-row" style="margin:0">
+          <a class="btn" id="gp" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
+          <a class="btn" id="as" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
+          <a class="btn discord" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Join Discord</a>
+        </div>
+
+        <div class="hr"></div>
+        <p class="small" id="info" style="margin:0"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const gp = document.getElementById('gp');
+      const as = document.getElementById('as');
+      const info = document.getElementById('info');
+
+      const qs = new URLSearchParams(location.search);
+      const hasParams = qs.toString().length > 0;
+
+      // Store params so later pages can use them (optional)
+      if(hasParams){
+        try{ localStorage.setItem('cc_utm', qs.toString()); }catch(e){}
+      }
+
+      // Basic UA sniffing (fast + good enough for a landing page)
+      const ua = navigator.userAgent || "";
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+      const msg = [];
+      if(isAndroid) msg.push("Detected: Android");
+      else if(isIOS) msg.push("Detected: iOS");
+      else msg.push("Detected: Desktop / other");
+
+      if(hasParams) msg.push("Tracking params captured.");
+
+      info.textContent = msg.join(" • ");
+
+      // Auto redirect after a short delay (let users see they are on official domain)
+      setTimeout(()=>{
+        if(isAndroid) location.href = gp.href;
+        else if(isIOS) location.href = as.href;
+      }, 700);
+    })();
+  </script>
+</body>
+</html>
