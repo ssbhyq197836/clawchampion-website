@@ -1,77 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Download ClawChampion</title>
-  <meta name="description" content="Smart download link for ClawChampion." />
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="icon" href="/assets/favicon.jpg" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClawChampion — Play the Arcade. Become the Champion.</title>
+  <meta name="description" content="Real arcade machines on your phone. Play the Arcade. Become the Champion." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0b0f1a, #111c2e);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #b0c4ff;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #4c6fff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #3558ff;
+    }
+
+    .btn-outline {
+      border: 1px solid #4c6fff;
+      color: #4c6fff;
+    }
+
+    .btn-outline:hover {
+      background: #4c6fff;
+      color: white;
+    }
+
+    .features {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 15px;
+      color: #6fa8ff;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="/" aria-label="Back to Home">
-        <img src="/assets/favicon.jpg" alt="ClawChampion logo" />
-        <span>CLAWCHAMPION</span>
-      </a>
-      <a class="btn ghost" href="/">Home</a>
-    </div>
-  </header>
 
-  <main class="section">
-    <div class="container">
-      <h2>Download ClawChampion</h2>
-      <p>This page detects your device and takes you to the correct store. If auto-redirect doesn’t happen, use the buttons below.</p>
+<header>
+  <div class="logo">CLAWCHAMPION</div>
+</header>
 
-      <div class="panel">
-        <div class="cta-row" style="margin:0">
-          <a class="btn" id="gp" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
-          <a class="btn" id="as" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
-          <a class="btn discord" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Join Discord</a>
-        </div>
+<section class="hero">
+  <h1>Play the Arcade.<br>Become the Champion.</h1>
+  <p>
+    Experience real claw machines and arcade coin pushers on your phone.
+    Skill-based gameplay. Real-time control. Competitive rewards.
+  </p>
 
-        <div class="hr"></div>
-        <p class="small" id="info" style="margin:0"></p>
-      </div>
-    </div>
-  </main>
+  <div class="buttons">
+    <a class="btn btn-primary" href="#">Download on Google Play</a>
+    <a class="btn btn-outline" href="#">Download on App Store</a>
+    <a class="btn btn-outline" href="#">Join Discord</a>
+  </div>
+</section>
 
-  <script>
-    (function(){
-      const gp = document.getElementById('gp');
-      const as = document.getElementById('as');
-      const info = document.getElementById('info');
+<section class="features">
+  <div class="feature-card">
+    <h3>🎮 Real Arcade Machines</h3>
+    <p>Control real claw machines and coin pushers remotely in real time.</p>
+  </div>
 
-      const qs = new URLSearchParams(location.search);
-      const hasParams = qs.toString().length > 0;
+  <div class="feature-card">
+    <h3>🏆 Competitive Gameplay</h3>
+    <p>Challenge players worldwide and climb the leaderboard.</p>
+  </div>
 
-      // Store params so later pages can use them (optional)
-      if(hasParams){
-        try{ localStorage.setItem('cc_utm', qs.toString()); }catch(e){}
-      }
+  <div class="feature-card">
+    <h3>🎁 Exclusive Rewards</h3>
+    <p>Unlock special prizes and limited-time event rewards.</p>
+  </div>
+</section>
 
-      // Basic UA sniffing (fast + good enough for a landing page)
-      const ua = navigator.userAgent || "";
-      const isAndroid = /Android/i.test(ua);
-      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+<section class="cta">
+  <h2>Ready to become a Champion?</h2>
+  <div class="buttons">
+    <a class="btn btn-primary" href="#">Start Playing Now</a>
+  </div>
+</section>
 
-      const msg = [];
-      if(isAndroid) msg.push("Detected: Android");
-      else if(isIOS) msg.push("Detected: iOS");
-      else msg.push("Detected: Desktop / other");
+<footer>
+  © 2026 ClawChampion. All rights reserved.
+</footer>
 
-      if(hasParams) msg.push("Tracking params captured.");
-
-      info.textContent = msg.join(" • ");
-
-      // Auto redirect after a short delay (let users see they are on official domain)
-      setTimeout(()=>{
-        if(isAndroid) location.href = gp.href;
-        else if(isIOS) location.href = as.href;
-      }, 700);
-    })();
-  </script>
 </body>
 </html>
