@@ -324,3 +324,29 @@ summary::-webkit-details-marker{ display:none; }
 }
 .footer-row{ display:flex; justify-content:space-between; align-items:center; }
 .fine{ color: rgba(255,255,255,.58); line-height:1.7; font-weight:650; font-size:13px; }
+/* Fix hero video size + prevent stretching */
+.media-slot{
+  width: 100%;
+  height: 320px;              /* desktop default height */
+  aspect-ratio: 16 / 9;       /* keep ratio */
+  overflow: hidden;
+}
+
+.media-slot .hero-video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crop instead of stretch */
+  object-position: center;
+  display: block;
+}
+
+/* Responsive sizes */
+@media (max-width: 1200px){
+  .media-slot{ height: 280px; }
+}
+@media (max-width: 980px){
+  .media-slot{ height: 240px; }
+}
+@media (max-width: 520px){
+  .media-slot{ height: 200px; }
+}
