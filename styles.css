@@ -29,7 +29,7 @@ body{
 a{ color:inherit; }
 .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 18px; }
 
-/* Header */
+/* ===== Header ===== */
 .site-header{
   position: sticky;
   top: 0;
@@ -89,7 +89,7 @@ a{ color:inherit; }
   border-radius:999px;
 }
 
-/* Mobile dropdown: fixed right below header, full width, correct position */
+/* Mobile dropdown: full-width under header */
 .mobile-menu{
   position: absolute;
   left: 0;
@@ -129,14 +129,17 @@ a{ color:inherit; }
   .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
 }
 
-/* Hero */
+/* ===== Hero ===== */
 .hero{ padding:58px 0 26px; }
+
+/* Make right side smaller to avoid video dominating */
 .hero-grid{
   display:grid;
-  grid-template-columns: 1.25fr .95fr;
+  grid-template-columns: 1.35fr .65fr; /* smaller right column */
   gap:26px;
-  align-items:center;
+  align-items:start;                  /* don't stretch cards */
 }
+
 .eyebrow{
   display:inline-flex;
   padding:8px 12px;
@@ -149,6 +152,7 @@ a{ color:inherit; }
   text-transform:uppercase;
   font-size:12px;
 }
+
 h1{
   margin:14px 0 10px;
   font-size:62px;
@@ -162,6 +166,7 @@ h1{
   line-height:1.6;
   max-width:56ch;
 }
+
 .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
 .btn{
   display:inline-flex;
@@ -194,7 +199,7 @@ h1{
   font-weight:650;
 }
 
-/* Right card */
+/* Right hero card */
 .hero-card{
   border-radius: var(--radius2);
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
@@ -206,20 +211,24 @@ h1{
 .hero-card h3{ margin:0; font-size:20px; }
 .bullets{ margin:0; padding-left:18px; color: rgba(255,255,255,.78); line-height:1.65; font-weight:600; }
 
+/* ===== Key fix: force video area small + no distortion ===== */
 .media-slot{
   margin-top:6px;
   border-radius:18px;
   border:1px solid rgba(255,255,255,.12);
   background: rgba(0,0,0,.18);
   overflow:hidden;
-  aspect-ratio: 16 / 9;
   position:relative;
+
+  height: 200px;            /* smaller by default */
+  width: 100%;
 }
 .media-slot .hero-video{
   width:100%;
   height:100%;
   display:block;
   object-fit:cover;
+  object-position:center;
 }
 .media-badge{
   position:absolute;
@@ -240,12 +249,22 @@ h1{
   line-height:1.6;
 }
 
+/* Responsive tuning */
+@media (max-width: 1200px){
+  .media-slot{ height: 180px; }
+}
 @media (max-width: 980px){
   h1{ font-size:52px; }
   .hero-grid{ grid-template-columns: 1fr; }
+  .media-slot{ height: 220px; } /* on mobile single column, can be a bit taller */
+}
+@media (max-width: 520px){
+  h1{ font-size:42px; }
+  .sub{ font-size:16px; }
+  .media-slot{ height: 200px; }
 }
 
-/* Sections */
+/* ===== Sections ===== */
 .section{ padding:52px 0; }
 .section-title{
   display:flex;
@@ -324,29 +343,3 @@ summary::-webkit-details-marker{ display:none; }
 }
 .footer-row{ display:flex; justify-content:space-between; align-items:center; }
 .fine{ color: rgba(255,255,255,.58); line-height:1.7; font-weight:650; font-size:13px; }
-/* Fix hero video size + prevent stretching */
-.media-slot{
-  width: 100%;
-  height: 320px;              /* desktop default height */
-  aspect-ratio: 16 / 9;       /* keep ratio */
-  overflow: hidden;
-}
-
-.media-slot .hero-video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* crop instead of stretch */
-  object-position: center;
-  display: block;
-}
-
-/* Responsive sizes */
-@media (max-width: 1200px){
-  .media-slot{ height: 280px; }
-}
-@media (max-width: 980px){
-  .media-slot{ height: 240px; }
-}
-@media (max-width: 520px){
-  .media-slot{ height: 200px; }
-}
