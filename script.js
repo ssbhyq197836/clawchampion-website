@@ -1,36 +1,49 @@
-(function(){
-  const sheet = document.getElementById("sheet");
-  const openBtn = document.getElementById("openMenu");
-  const closeBtn = document.getElementById("closeMenu");
+document.addEventListener("DOMContentLoaded", () => {
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  function openSheet(){ sheet?.classList.add("open"); }
-  function closeSheet(){ sheet?.classList.remove("open"); }
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.getElementById("mobileMenu");
+  const header = document.querySelector(".site-header");
+  if (!toggle || !menu || !header) return;
 
-  openBtn?.addEventListener("click", openSheet);
-  closeBtn?.addEventListener("click", closeSheet);
-  sheet?.addEventListener("click", (e)=>{ if(e.target === sheet) closeSheet(); });
+  function openMenu() {
+    menu.hidden = false;
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close menu");
+  }
 
-  // Smooth scroll for in-page anchors
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener("click", (e)=>{
-      const id = a.getAttribute("href");
-      if(!id || id === "#") return;
-      const el = document.querySelector(id);
-      if(!el) return;
-      e.preventDefault();
-      closeSheet();
-      el.scrollIntoView({behavior:"smooth", block:"start"});
-      history.replaceState(null, "", id);
-    });
+  function closeMenu() {
+    menu.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open menu");
+  }
+
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    expanded ? closeMenu() : openMenu();
   });
 
-  // Download smart link
-  const smartBtn = document.querySelector("[data-smart-download]");
-  smartBtn?.addEventListener("click", (e)=>{
-    e.preventDefault();
-    const qs = new URLSearchParams(location.search);
-    const qsStr = qs.toString();
-    const target = "/download/" + (qsStr ? ("?"+qsStr) : "");
-    location.href = target;
+  // click item -> close
+  menu.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (a) closeMenu();
   });
-})();
+
+  // click outside -> close
+  document.addEventListener("click", (e) => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    if (!expanded) return;
+    if (!header.contains(e.target)) closeMenu();
+  });
+
+  // ESC -> close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // resize -> close when back to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860) closeMenu();
+  });
+});
