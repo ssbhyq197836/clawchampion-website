@@ -1,61 +1,219 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ClawChampion</title>
-  <meta name="description" content="Play the Arcade. Become the Champion." />
-  <link rel="icon" href="/favicon.jpg" />
+  <title>ClawChampion — Play the Arcade. Become the Champion.</title>
+  <meta name="description" content="Experience real claw machines and arcade coin pushers on your phone. Skill-based gameplay. Real-time control. Competitive rewards." />
+  <meta name="theme-color" content="#0b0f1a" />
 
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="nav-wrap container" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="ClawChampion Home">
+        <img class="brand-logo" src="/logo.jpg" alt="ClawChampion" />
+      </a>
 
-<header class="site-header">
-  <nav class="nav-wrap">
-    <a class="brand" href="#">
-      <img class="brand-logo" src="/logo.jpg" alt="ClawChampion">
-    </a>
+      <button class="nav-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
 
-    <button class="nav-toggle" id="navToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <div class="nav-links" role="navigation">
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#screenshots">Screenshots</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link nav-cta" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </nav>
 
-    <div class="nav-links" id="navLinks">
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://discord.gg/TbnewwnT8A" target="_blank">Discord</a>
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="mobile-menu container" hidden>
+      <a class="mobile-link" href="#features">Features</a>
+      <a class="mobile-link" href="#screenshots">Screenshots</a>
+      <a class="mobile-link" href="#faq">FAQ</a>
+      <a class="mobile-link mobile-cta" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
     </div>
-  </nav>
-</header>
+  </header>
 
-<section class="hero">
-  <h1>Play the Arcade.<br>Become the Champion.</h1>
-  <p>Real arcade coin pushers on your phone.</p>
-</section>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <div class="eyebrow">REAL ARCADE MACHINES · SKILL-BASED · COMPETITION</div>
+          <h1>Play the Arcade.<br />Become the Champion.</h1>
+          <p class="sub">
+            Experience real claw machines and arcade coin pushers on your phone.
+            Skill-based gameplay. Real-time control. Competitive rewards.
+          </p>
 
-<section id="features">
-  <h2>Features</h2>
-  <p>Real hardware. Real competition. Real rewards.</p>
-</section>
+          <div class="cta-row">
+            <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">
+              Download on Google Play
+            </a>
+            <a class="btn" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">
+              Download on App Store
+            </a>
+            <a class="btn" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">
+              Join Discord
+            </a>
+          </div>
 
-<section id="screenshots">
-  <h2>Screenshots</h2>
-  <img src="/2.jpg" style="width:300px;">
-  <img src="/5.jpg" style="width:300px;">
-  <img src="/8.jpg" style="width:300px;">
-</section>
+          <div class="tip">Tip: New players can join Discord for updates, events and support.</div>
+        </div>
 
-<section id="faq">
-  <h2>FAQ</h2>
-  <p>Coming soon...</p>
-</section>
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <h3>Why players love it</h3>
+            <ul class="bullets">
+              <li>Real hardware with live camera view</li>
+              <li>Coin pushers & arcade games included</li>
+              <li>Fast onboarding, easy download</li>
+            </ul>
 
-<script src="/script.js"></script>
+            <div class="media-slot">
+              <div class="media-badge">Highlight</div>
+              <img src="/2.jpg" alt="ClawChampion gameplay highlight" />
+            </div>
 
+            <div class="hero-note">
+              Next step: replace this image with a 10–15s hero video/GIF to increase conversion.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Features</h2>
+          <p>Designed for fast fun and fair skill play</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Real-time Control</h3>
+            <p>Play with live camera view and responsive controls built for mobile.</p>
+          </div>
+          <div class="card">
+            <h3>Coin Pusher Thrills</h3>
+            <p>Classic arcade coin pusher gameplay with JP rewards and full-board moments.</p>
+          </div>
+          <div class="card">
+            <h3>More Arcade Games</h3>
+            <p>Enter different arcade rooms—each with unique rules and fun.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Gameplay Screenshots</h2>
+          <p>See ClawChampion in action — real arcade machines on your phone.</p>
+        </div>
+
+        <div class="shots">
+          <div class="shot">
+            <div class="label">Coin Pushers</div>
+            <img src="/5.jpg" alt="Coin pusher rooms" />
+          </div>
+          <div class="shot">
+            <div class="label">Main Page</div>
+            <img src="/8.jpg" alt="Main page" />
+          </div>
+          <div class="shot">
+            <div class="label">Arcade</div>
+            <img src="/2.jpg" alt="Arcade gameplay" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <p>Quick answers</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>
+              How do I log in to ClawChampion?
+              <span class="chev">▾</span>
+            </summary>
+            <div class="faq-body">
+              You can log in via <b>Guest Login</b>, <b>Gmail Email Registration</b>, or <b>Social Account Login</b>.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              How do I play the coin pusher?
+              <span class="chev">▾</span>
+            </summary>
+            <div class="faq-body">
+              Insert coins to push forward. Dropped coins are added to your <b>GP</b>, and you may trigger <b>JP</b> or <b>Full-board</b> rewards.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Recharge not credited — what should I do?
+              <span class="chev">▾</span>
+            </summary>
+            <div class="faq-body">
+              Email <b>customerservice@clawchampion.com</b> with your payment screenshot and game ID for verification.
+            </div>
+          </details>
+        </div>
+
+        <div class="fine-note">
+          Important: ClawChampion is a pure entertainment game. No physical prizes, shipping or logistics services are provided.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="/logo.jpg" alt="ClawChampion" />
+          <div class="footer-name">ClawChampion</div>
+        </div>
+        <div class="fine">
+          Support: <b>customerservice@clawchampion.com</b><br />
+          Community: <b>Discord</b> — join for updates, events and help.
+        </div>
+        <div class="fine">© <span id="year"></span> ClawChampion. All rights reserved.</div>
+      </div>
+
+      <div class="footer-links">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
+        <a class="btn" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
 </body>
 </html>
