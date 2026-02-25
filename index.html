@@ -525,6 +525,15 @@ iframe[src*="chatbase.co"],
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+    /* ===== Hide Chatbase welcome toast/banner only ===== */
+.chatbase-toast,
+#chatbase-message,
+#chatbase-tooltip,
+div[role="dialog"][aria-live],
+div[aria-live="polite"],
+div[aria-live="assertive"]{
+  display: none !important;
+}
   </style>
 </head>
 
