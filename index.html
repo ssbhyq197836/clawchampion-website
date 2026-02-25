@@ -10,18 +10,13 @@
     :root{
       --bg:#060713;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.10);
       --text:#EAF0FF;
       --muted: rgba(234,240,255,.72);
-      --line: rgba(255,255,255,.14);
-
       --n1:#6D5BFF;
       --n2:#00E5FF;
       --n3:#FF3DB8;
       --n4:#FFD84D;
-
       --shadow: 0 18px 70px rgba(0,0,0,.55);
-      --radius: 18px;
       --radius2: 24px;
       --max: 1120px;
     }
@@ -62,13 +57,18 @@
       display:flex; align-items:center; gap:10px;
       text-decoration:none;
     }
-    .logo{
-      width:42px; height:42px; border-radius:12px;
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.30), transparent 55%),
-        linear-gradient(135deg, rgba(109,91,255,.95), rgba(0,229,255,.85) 55%, rgba(255,61,184,.85));
-      box-shadow: 0 10px 30px rgba(109,91,255,.18);
+    /* Use real image logo */
+    .logo-img{
+      width:42px; height:42px;
+      border-radius:12px;
+      display:block;
+      object-fit:cover;
       border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      filter:none !important;
+      -webkit-filter:none !important;
+      mix-blend-mode:normal !important;
+      opacity:1 !important;
     }
     .brand-text{display:flex; flex-direction:column; line-height:1.1}
     .brand-text strong{font-size:14px; letter-spacing:.3px}
@@ -386,52 +386,6 @@
     .foot a:hover{text-decoration:underline}
     .small{font-size:12px; color:rgba(234,240,255,.64); line-height:1.55}
 
-    /* Floating WhatsApp */
-    .wa-float{
-      position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:999;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-end;
-    }
-    .wa-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.40);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 22px 70px rgba(0,0,0,.55);
-      text-decoration:none;
-      font-weight:900;
-      font-size:13px;
-      color:var(--text);
-      transition:.18s ease;
-      max-width:min(92vw, 360px);
-    }
-    .wa-btn:hover{transform: translateY(-1px); background: rgba(0,0,0,.52)}
-    .wa-dot{
-      width:12px;height:12px;border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,255,163,.85));
-      box-shadow: 0 0 18px rgba(0,255,163,.35);
-      flex:0 0 auto;
-    }
-    .wa-sub{
-      font-size:12px;
-      color:rgba(234,240,255,.70);
-      margin-right:10px;
-      background: rgba(0,0,0,.32);
-      border:1px solid rgba(255,255,255,.10);
-      padding:8px 10px;
-      border-radius:14px;
-      backdrop-filter: blur(10px);
-    }
-
     /* Responsive */
     @media (max-width: 980px){
       h1{font-size:40px}
@@ -448,134 +402,124 @@
       h1{font-size:34px}
       .btn{min-width: 160px; width:100%}
       .cta-row{gap:10px}
-      .wa-sub{display:none}
     }
-    <style>
-/* ===== Support Hub (Floating) ===== */
-.support-hub{
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-.support-hub__panel{
-  width: min(92vw, 320px);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.16);
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 24px 80px rgba(0,0,0,.60);
-  overflow: hidden;
-  display: none;
-}
-.support-hub__panel.open{display:block;}
-.support-hub__header{
-  padding: 12px 14px;
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  border-bottom: 1px solid rgba(255,255,255,.10);
-}
-.support-hub__header strong{font-size:13px; letter-spacing:.2px;}
-.support-hub__close{
-  width: 34px; height: 34px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: #fff;
-  cursor:pointer;
-}
-.support-hub__body{padding: 12px 12px 14px;}
-.support-hub__btn{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding: 12px 12px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color:#fff;
-  text-decoration:none;
-  font-weight: 800;
-  margin-top: 10px;
-  transition: .18s ease;
-}
-.support-hub__btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
-.support-hub__btn small{display:block; font-weight:700; opacity:.78}
-.support-hub__dot{
-  width: 12px; height: 12px; border-radius:999px;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,229,255,.85));
-  box-shadow: 0 0 18px rgba(0,229,255,.35);
-}
-.support-hub__dot.wa{
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,255,163,.85));
-  box-shadow: 0 0 18px rgba(0,255,163,.35);
-}
-.support-hub__fab{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,229,255,.35);
-  background: linear-gradient(135deg, rgba(0,229,255,.20), rgba(109,91,255,.18), rgba(255,61,184,.14));
-  box-shadow: 0 22px 70px rgba(0,0,0,.55);
-  color:#fff;
-  cursor:pointer;
-  font-weight: 900;
-  font-size: 13px;
-  transition: .18s ease;
-}
-.support-hub__fab:hover{transform: translateY(-1px);}
-.support-hub__hint{
-  font-size: 12px;
-  color: rgba(234,240,255,.76);
-  background: rgba(0,0,0,.40);
-  border: 1px solid rgba(255,255,255,.10);
-  padding: 8px 10px;
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
-}
-@media (max-width:720px){
-  .support-hub__hint{display:none;}
-}
-    /* ===== Support Hub: right-middle & larger ===== */
-.support-hub{
-  position: fixed !important;
-  right: 18px !important;
-  left: auto !important;
-  top: 50% !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-end !important;
-  gap: 10px !important;
-}
 
-.support-hub__fab{
-  padding: 16px 20px !important;
-  font-size: 15px !important;
-  border-radius: 999px !important;
-}
+    /* ===== Support Hub (Floating) ===== */
+    .support-hub{
+      position: fixed;
+      right: 18px;
+      left: auto;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .support-hub__panel{
+      width: min(92vw, 340px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.60);
+      overflow: hidden;
+      display: none;
+    }
+    .support-hub__panel.open{display:block;}
+    .support-hub__header{
+      padding: 12px 14px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .support-hub__header strong{font-size:13px; letter-spacing:.2px;}
+    .support-hub__close{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      cursor:pointer;
+    }
+    .support-hub__body{padding: 12px 12px 14px;}
+    .support-hub__btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      text-decoration:none;
+      font-weight: 800;
+      margin-top: 10px;
+      transition: .18s ease;
+    }
+    .support-hub__btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .support-hub__btn small{display:block; font-weight:700; opacity:.78}
+    .support-hub__dot{
+      width: 12px; height: 12px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,229,255,.85));
+      box-shadow: 0 0 18px rgba(0,229,255,.35);
+      flex: 0 0 auto;
+    }
+    .support-hub__dot.wa{
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,255,163,.85));
+      box-shadow: 0 0 18px rgba(0,255,163,.35);
+    }
+    .support-hub__fab{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,229,255,.35);
+      background: linear-gradient(135deg, rgba(0,229,255,.20), rgba(109,91,255,.18), rgba(255,61,184,.14));
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      color:#fff;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 15px;
+      transition: .18s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .support-hub__fab:hover{transform: translateY(-1px);}
+    .support-hub__hint{
+      font-size: 12px;
+      color: rgba(234,240,255,.76);
+      background: rgba(0,0,0,.40);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 8px 10px;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      max-width: 220px;
+      text-align:right;
+    }
+    @media (max-width:720px){
+      .support-hub{top:auto; bottom:18px; transform:none;}
+      .support-hub__hint{display:none;}
+    }
 
-.support-hub__panel{
-  width: min(92vw, 340px) !important;
-}
-    /* ===== Fix logo color / avoid unwanted filters ===== */
-.logo, .brand img, .brand svg{
-  filter: none !important;
-  -webkit-filter: none !important;
-  mix-blend-mode: normal !important;
-  opacity: 1 !important;
-}
-</style>
+    /* ===== Hide Chatbase default bubble / popups (use Support Hub entry) ===== */
+    #chatbase-bubble,
+    #chatbase-bubble-button,
+    #chatbase-message,
+    #chatbase-tooltip,
+    .chatbase-bubble,
+    .chatbase-widget,
+    .chatbase-launcher,
+    .chatbase-toast,
+    div[id*="chatbase"],
+    button[id*="chatbase"]{
+      display:none !important;
+    }
   </style>
 </head>
 
@@ -585,7 +529,9 @@
     <div class="wrap">
       <div class="nav-inner">
         <a class="brand" href="#top">
-          <div class="logo" aria-hidden="true"></div>
+          <!-- IMPORTANT: put your real logo file at /logo.jpg (same folder as index.html).
+               If your file name/path is different, change src accordingly. -->
+          <img class="logo-img" src="logo.jpg" alt="ClawChampion" />
           <div class="brand-text">
             <strong>ClawChampion</strong>
             <span>Real arcade. Real competition.</span>
@@ -623,7 +569,7 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="card hero-left">
-          <span class="tag"><i></i> 24/7 Support + Real Arcade Gameplay</span>
+          <span class="tag"><i></i> 24/7 AI + WhatsApp Support</span>
 
           <h1>
             Play the Arcade.<br/>
@@ -651,18 +597,17 @@
             Prefer human help? WhatsApp Live Support:
             <a href="https://wa.me/8615140565877" target="_blank" rel="noopener">+86 151 4056 5877</a>
             <br/>
-            Or ask the AI bot in the bottom-right corner.
+            Or tap <b>Support</b> on the right side to chat with our AI.
           </div>
 
+          <!-- Invitation removed; keep only one trust line -->
           <div class="mini">
-            <span>Invitation code: <b>555</b> (get free coins)</span>
             <span>Fast answers • Clear rules • Real-time help</span>
           </div>
         </div>
 
         <div class="card hero-right">
           <div class="video-shell" aria-label="ClawChampion hero video">
-            <!-- Replace video URL if needed -->
             <video src="https://www.clawchampion.com/hero.mp4" autoplay muted loop playsinline></video>
             <div class="video-badge">Live Moments • <b>Real Drops</b> • Pure Arcade</div>
           </div>
@@ -754,7 +699,6 @@
           </summary>
           <div class="ans">
             You can log in via Guest Login, Gmail Email Registration Login, or Social Account Login.
-            Using a frequently used email is recommended to receive important announcements and activity updates.
           </div>
         </details>
 
@@ -764,8 +708,7 @@
             <span class="chev">⌄</span>
           </summary>
           <div class="ans">
-            After inserting coins, push forward to drop more coins. Dropped coins are added directly to your GP balance,
-            with chances to win JP Rewards or Full-board Rewards.
+            After inserting coins, push forward to drop more coins. Dropped coins are added directly to your GP balance.
           </div>
         </details>
 
@@ -775,7 +718,7 @@
             <span class="chev">⌄</span>
           </summary>
           <div class="ans">
-            Enter an arcade room and follow the room instructions. Each game has unique mechanics. Read the instructions before starting.
+            Enter an arcade room and follow the room instructions. Read the instructions before starting.
           </div>
         </details>
 
@@ -786,7 +729,7 @@
           </summary>
           <div class="ans">
             Check your network and ensure you have the latest version installed. If issues persist, try reinstalling the app.
-            For help, contact: customerservice@clawchampion.com
+            For help, email: customerservice@clawchampion.com
           </div>
         </details>
 
@@ -796,8 +739,7 @@
             <span class="chev">⌄</span>
           </summary>
           <div class="ans">
-            If coin pushing doesn’t respond, buttons are missing, or you see lag, use the in-room Fault button.
-            If you believe there is GP loss due to issues, provide screenshots/videos to customer service for verification.
+            If there is lag or missing buttons, use the in-room Fault button. If you believe there was GP loss, contact support with proof.
           </div>
         </details>
 
@@ -817,8 +759,7 @@
             <span class="chev">⌄</span>
           </summary>
           <div class="ans">
-            New users get GP on first login, you can earn GP by inviting friends, and you can also obtain more via recharge.
-            Occasional events may offer GP benefits.
+            New users get GP on first login. You can also get GP via invite rewards, recharge, and occasional events.
           </div>
         </details>
 
@@ -841,7 +782,7 @@
       <div class="foot">
         <div>
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-            <div class="logo" aria-hidden="true" style="width:36px;height:36px;border-radius:12px;"></div>
+            <img class="logo-img" src="logo.jpg" alt="ClawChampion" style="width:36px;height:36px;border-radius:12px;" />
             <div>
               <div style="font-weight:900;">ClawChampion</div>
               <div class="small">Play the Arcade. Become the Champion.</div>
@@ -868,8 +809,41 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-    <script>
+  <!-- Support Hub (Floating) -->
+  <div class="support-hub" aria-label="Support Hub">
+    <div class="support-hub__hint">Need help? Tap Support</div>
+
+    <div class="support-hub__panel" id="supportPanel">
+      <div class="support-hub__header">
+        <strong>Support</strong>
+        <button class="support-hub__close" id="supportClose" aria-label="Close">✕</button>
+      </div>
+      <div class="support-hub__body">
+        <a class="support-hub__btn" href="#" id="openChatbase">
+          <span class="support-hub__dot" aria-hidden="true"></span>
+          <div>
+            Chat with AI Support
+            <small>Fast answers for common questions</small>
+          </div>
+        </a>
+
+        <a class="support-hub__btn" href="https://wa.me/8615140565877" target="_blank" rel="noopener">
+          <span class="support-hub__dot wa" aria-hidden="true"></span>
+          <div>
+            WhatsApp Human Support
+            <small>+86 151 4056 5877</small>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <button class="support-hub__fab" id="supportFab" aria-label="Open Support">
+      <span class="support-hub__dot" aria-hidden="true"></span>
+      Support
+    </button>
+  </div>
+
+  <script>
     // Mobile menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -881,73 +855,44 @@
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Support Hub toggle
+    const supportFab = document.getElementById('supportFab');
+    const supportPanel = document.getElementById('supportPanel');
+    const supportClose = document.getElementById('supportClose');
+    const openChatbase = document.getElementById('openChatbase');
+
+    function setPanel(open){
+      supportPanel.classList.toggle('open', open);
+    }
+
+    supportFab?.addEventListener('click', () => {
+      const isOpen = supportPanel.classList.contains('open');
+      setPanel(!isOpen);
+    });
+
+    supportClose?.addEventListener('click', () => setPanel(false));
+
+    // Open Chatbase widget (best-effort)
+    openChatbase?.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        if (window.chatbase) {
+          // Different versions may support different commands
+          window.chatbase('open');
+          window.chatbase('show');
+          window.chatbase('toggle');
+        }
+      } catch (_) {}
+      setPanel(false);
+      // If Chatbase still doesn't pop (some accounts lock programmatic open),
+      // user can still open via Support again or we can switch to a dedicated /help page embed.
+    });
   </script>
-<script>
-  // Support Hub toggle
-  const supportFab = document.getElementById('supportFab');
-  const supportPanel = document.getElementById('supportPanel');
-  const supportClose = document.getElementById('supportClose');
-  const openChatbase = document.getElementById('openChatbase');
 
-  function setPanel(open){
-    supportPanel.classList.toggle('open', open);
-  }
-
-  supportFab?.addEventListener('click', () => {
-    const isOpen = supportPanel.classList.contains('open');
-    setPanel(!isOpen);
-  });
-
-  supportClose?.addEventListener('click', () => setPanel(false));
-
-  // Open Chatbase widget (best-effort)
-  openChatbase?.addEventListener('click', (e) => {
-    e.preventDefault();
-    try {
-      if (window.chatbase) {
-        window.chatbase('open');
-        window.chatbase('show');
-      }
-    } catch (_) {}
-    setPanel(false);
-  });
-</script>
-  <!-- Chatbase Support Bot (replace chatbotId) -->
+  <!-- Chatbase embed (ONLY ONE copy) -->
   <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="3r8Hg4XBUHdbyAxfg2u59";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-  <!-- Support Hub (Floating) -->
-<div class="support-hub" aria-label="Support Hub">
-  <div class="support-hub__hint">Need help? Tap Support</div>
-
-  <div class="support-hub__panel" id="supportPanel">
-    <div class="support-hub__header">
-      <strong>Support</strong>
-      <button class="support-hub__close" id="supportClose" aria-label="Close">✕</button>
-    </div>
-    <div class="support-hub__body">
-      <a class="support-hub__btn" href="#" id="openChatbase">
-        <span class="support-hub__dot" aria-hidden="true"></span>
-        <div>
-          Chat with AI Support
-          <small>Fast answers for common questions</small>
-        </div>
-      </a>
-
-      <a class="support-hub__btn" href="https://wa.me/8615140565877" target="_blank" rel="noopener">
-        <span class="support-hub__dot wa" aria-hidden="true"></span>
-        <div>
-          WhatsApp Human Support
-          <small>+86 151 4056 5877</small>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <button class="support-hub__fab" id="supportFab" aria-label="Open Support">
-    <span class="support-hub__dot" aria-hidden="true"></span>
-    Support
-  </button>
-</div>
+  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="3r8Hg4XBUHdbyAxfg2u59";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
 </body>
 </html>
