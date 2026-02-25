@@ -507,19 +507,24 @@
       .support-hub__hint{display:none;}
     }
 
-    /* ===== Hide Chatbase default bubble / popups (use Support Hub entry) ===== */
-    #chatbase-bubble,
-    #chatbase-bubble-button,
-    #chatbase-message,
-    #chatbase-tooltip,
-    .chatbase-bubble,
-    .chatbase-widget,
-    .chatbase-launcher,
-    .chatbase-toast,
-    div[id*="chatbase"],
-    button[id*="chatbase"]{
-      display:none !important;
-    }
+    /* ===== Hide ONLY the Chatbase launcher bubble (keep widget clickable) ===== */
+#chatbase-bubble,
+#chatbase-bubble-button,
+.chatbase-bubble,
+.chatbase-launcher,
+.chatbase-tooltip{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scale(.92) !important;
+}
+
+/* Keep the actual chat window / iframe interactive */
+iframe[src*="chatbase.co"],
+#chatbase-widget,
+.chatbase-widget{
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
   </style>
 </head>
 
