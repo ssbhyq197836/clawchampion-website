@@ -568,6 +568,13 @@
 .support-hub__panel{
   width: min(92vw, 340px) !important;
 }
+    /* ===== Fix logo color / avoid unwanted filters ===== */
+.logo, .brand img, .brand svg{
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
 </style>
   </style>
 </head>
