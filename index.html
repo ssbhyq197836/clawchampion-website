@@ -1,316 +1,776 @@
-<!-- index.html  (整份覆盖) -->
 <!doctype html>
-<html lang="en" id="top">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ClawChampion — Play the Arcade. Become the Champion.</title>
-  <meta name="description" content="Real arcade machines on your phone. Coin pushers, skill-based competition, and rewards." />
-  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="description" content="Real arcade thrills on your phone: coin pushers, claw machines, and arcade games. Play the Arcade. Become the Champion." />
 
-  <!-- Open Graph (share preview) -->
-  <meta property="og:title" content="ClawChampion — Play the Arcade. Become the Champion." />
-  <meta property="og:description" content="Real arcade machines on your phone. Coin pushers, skill-based competition, and rewards." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.clawchampion.com/5.jpg" />
+  <style>
+    :root{
+      --bg:#060713;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --text:#EAF0FF;
+      --muted: rgba(234,240,255,.72);
+      --line: rgba(255,255,255,.14);
 
-  <link rel="icon" href="/favicon.jpg" />
-  <!-- cache-bust: 改版本号可强制更新缓存 -->
-  <link rel="stylesheet" href="/styles.css?v=20260224-4" />
+      --n1:#6D5BFF;
+      --n2:#00E5FF;
+      --n3:#FF3DB8;
+      --n4:#FFD84D;
+
+      --shadow: 0 18px 70px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(109,91,255,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(0,229,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 55% 85%, rgba(255,61,184,.18), transparent 60%),
+        radial-gradient(800px 480px at 90% 90%, rgba(255,216,77,.14), transparent 60%),
+        linear-gradient(180deg, #050610, #040514 55%, #030313);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(6,7,19,.82), rgba(6,7,19,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:42px; height:42px; border-radius:12px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.30), transparent 55%),
+        linear-gradient(135deg, rgba(109,91,255,.95), rgba(0,229,255,.85) 55%, rgba(255,61,184,.85));
+      box-shadow: 0 10px 30px rgba(109,91,255,.18);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .brand-text{display:flex; flex-direction:column; line-height:1.1}
+    .brand-text strong{font-size:14px; letter-spacing:.3px}
+    .brand-text span{font-size:12px; color:var(--muted)}
+    .menu{
+      display:flex; align-items:center; gap:14px;
+    }
+    .menu a{
+      text-decoration:none;
+      font-size:13px;
+      color:rgba(234,240,255,.86);
+      padding:10px 10px;
+      border-radius:12px;
+      transition:.18s ease;
+    }
+    .menu a:hover{background:rgba(255,255,255,.06)}
+    .nav-cta{display:flex; align-items:center; gap:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      transition:.18s ease;
+      box-shadow: 0 10px 35px rgba(0,0,0,.20);
+      white-space:nowrap;
+    }
+    .pill:hover{transform: translateY(-1px); background:rgba(255,255,255,.08)}
+    .pill.primary{
+      border:1px solid rgba(0,229,255,.35);
+      background: linear-gradient(135deg, rgba(0,229,255,.18), rgba(109,91,255,.16));
+    }
+
+    /* Mobile menu */
+    .burger{
+      display:none;
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+    }
+    .burger:active{transform:scale(.98)}
+    .mobile{
+      display:none;
+      padding:0 18px 14px;
+    }
+    .mobile a{
+      display:block;
+      text-decoration:none;
+      padding:12px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+      font-size:14px;
+    }
+
+    /* Hero */
+    .hero{padding:34px 0 22px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius:var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding:26px 22px}
+    .tag{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:12px;
+      color:rgba(234,240,255,.88);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .tag i{
+      width:10px;height:10px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(0,229,255,.75));
+      box-shadow: 0 0 18px rgba(0,229,255,.35);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .grad{
+      background: linear-gradient(90deg, var(--n2), var(--n1) 45%, var(--n3));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow: 0 0 28px rgba(0,229,255,.10);
+    }
+    .sub{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      margin:0 0 18px;
+      max-width:56ch;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:800;
+      font-size:14px;
+      transition:.18s ease;
+      min-width:170px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border:1px solid rgba(255,61,184,.30);
+      background: linear-gradient(135deg, rgba(255,61,184,.18), rgba(0,229,255,.14));
+      box-shadow: 0 20px 60px rgba(255,61,184,.12);
+    }
+    .btn small{font-weight:700; opacity:.86}
+    .support-note{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color:rgba(234,240,255,.88);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .support-note a{color:#EAF0FF; font-weight:800; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35)}
+    .support-note a:hover{border-bottom-color:rgba(255,255,255,.7)}
+    .mini{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+      color:rgba(234,240,255,.78);
+      font-size:12px;
+    }
+    .mini span{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+
+    .hero-right{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .video-shell{
+      position:relative;
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      aspect-ratio: 16/10;
+    }
+    .video-shell video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.15) contrast(1.08);
+    }
+    .video-badge{
+      position:absolute;
+      left:12px; top:12px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.38);
+      font-size:12px;
+      color:rgba(234,240,255,.92);
+      backdrop-filter: blur(10px);
+    }
+    .video-badge b{
+      background: linear-gradient(90deg, var(--n4), var(--n3));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .side-cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .mini-card{
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .mini-card strong{display:block; font-size:13px; margin-bottom:6px}
+    .mini-card p{margin:0; font-size:12px; color:var(--muted); line-height:1.45}
+
+    /* Sections */
+    section{padding:22px 0}
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.3px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .feature{
+      padding:16px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      min-height:132px;
+    }
+    .feature .icon{
+      width:40px;height:40px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(0,229,255,.14), rgba(255,61,184,.10));
+      box-shadow: 0 16px 40px rgba(0,229,255,.10);
+      margin-bottom:10px;
+      font-size:18px;
+    }
+    .feature strong{display:block; font-size:14px; margin-bottom:6px}
+    .feature p{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+
+    /* FAQ */
+    .faq{
+      overflow:hidden;
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    details{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding:14px 16px;
+    }
+    details:first-child{border-top:none}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight:800;
+      font-size:14px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .ans{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .chev{
+      width:26px;height:26px;border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+      transition:.18s ease;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+
+    /* Footer */
+    footer{padding:26px 0 34px; color:rgba(234,240,255,.75)}
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:16px;
+    }
+    .foot a{color:rgba(234,240,255,.86); text-decoration:none}
+    .foot a:hover{text-decoration:underline}
+    .small{font-size:12px; color:rgba(234,240,255,.64); line-height:1.55}
+
+    /* Floating WhatsApp */
+    .wa-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:999;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+    }
+    .wa-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.40);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      color:var(--text);
+      transition:.18s ease;
+      max-width:min(92vw, 360px);
+    }
+    .wa-btn:hover{transform: translateY(-1px); background: rgba(0,0,0,.52)}
+    .wa-dot{
+      width:12px;height:12px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(0,255,163,.85));
+      box-shadow: 0 0 18px rgba(0,255,163,.35);
+      flex:0 0 auto;
+    }
+    .wa-sub{
+      font-size:12px;
+      color:rgba(234,240,255,.70);
+      margin-right:10px;
+      background: rgba(0,0,0,.32);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;
+      border-radius:14px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      h1{font-size:40px}
+      .grid3{grid-template-columns:1fr; }
+      .hero-grid{grid-template-columns:1fr}
+      .side-cards{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .menu{display:none}
+      .nav-cta{display:none}
+      .burger{display:inline-flex; align-items:center; justify-content:center}
+      .mobile{display:block}
+      .side-cards{grid-template-columns:1fr}
+      h1{font-size:34px}
+      .btn{min-width: 160px; width:100%}
+      .cta-row{gap:10px}
+      .wa-sub{display:none}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header" id="siteHeader">
-    <nav class="nav-wrap container" aria-label="Primary">
-      <a class="brand" href="#top" aria-label="ClawChampion Home">
-        <img class="brand-logo" src="/logo.jpg" alt="ClawChampion" />
-      </a>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-text">
+            <strong>ClawChampion</strong>
+            <span>Real arcade. Real competition.</span>
+          </div>
+        </a>
 
-      <div class="nav-links" role="navigation" aria-label="Desktop navigation">
-        <a class="nav-link" href="#features">Features</a>
-        <a class="nav-link" href="#screenshots">Screenshots</a>
-        <a class="nav-link" href="#faq">FAQ</a>
-        <a class="nav-link nav-cta" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+        <nav class="menu" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#support">Support</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="pill" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+          <a class="pill primary" href="#download">Download</a>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Open menu">☰</button>
       </div>
 
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-    </nav>
-
-    <!-- Mobile dropdown -->
-    <div id="mobileMenu" class="mobile-menu" hidden>
-      <div class="container mobile-menu-inner">
-        <a class="mobile-link" href="#features">Features</a>
-        <a class="mobile-link" href="#screenshots">Screenshots</a>
-        <a class="mobile-link" href="#faq">FAQ</a>
-        <a class="mobile-link mobile-cta" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+      <div class="mobile" id="mobileMenu" style="display:none;">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#support">Support</a>
+        <a href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Join Discord</a>
+        <a href="#download">Download</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <div class="eyebrow">REAL ARCADE MACHINES · SKILL-BASED · COMPETITION</div>
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="card hero-left">
+          <span class="tag"><i></i> 24/7 Support + Real Arcade Gameplay</span>
 
-          <h1>Play the Arcade.<br/>Become the Champion.</h1>
+          <h1>
+            Play the Arcade.<br/>
+            <span class="grad">Become the Champion.</span>
+          </h1>
 
           <p class="sub">
-            Experience real claw machines and arcade coin pushers on your phone.
-            Skill-based gameplay. Real-time control. Competitive rewards.
+            ClawChampion brings authentic arcade thrills to your phone — coin pushers, claw machines,
+            and arcade games — designed for competition, skill, and unforgettable jackpot moments.
           </p>
 
-          <div class="pill-row" aria-label="Highlights">
-            <span class="pill">Live camera view</span>
-            <span class="pill">JP & full-board moments</span>
-            <span class="pill">Fast onboarding</span>
-          </div>
-
-          <div class="cta-row">
+          <div class="cta-row" id="download">
             <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">
-              Download on Google Play
+              Google Play <small>→</small>
             </a>
             <a class="btn" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">
-              Download on App Store
+              App Store <small>→</small>
             </a>
-            <a class="btn ghost" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">
-              Join Discord
+            <a class="btn" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">
+              Join Discord <small>→</small>
             </a>
           </div>
 
-          <div class="tip">
-            Tip: New players can join Discord for updates, events and support.
+          <div class="support-note" id="support">
+            Prefer human help? WhatsApp Live Support:
+            <a href="https://wa.me/8615140565877" target="_blank" rel="noopener">+86 151 4056 5877</a>
+            <br/>
+            Or ask the AI bot in the bottom-right corner.
+          </div>
+
+          <div class="mini">
+            <span>Invitation code: <b>555</b> (get free coins)</span>
+            <span>Fast answers • Clear rules • Real-time help</span>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Hero card">
-          <div class="hero-card-inner">
-            <div class="hero-card-title">
-              <h3>Why players love it</h3>
-              <span class="badge">LIVE</span>
+        <div class="card hero-right">
+          <div class="video-shell" aria-label="ClawChampion hero video">
+            <!-- Replace video URL if needed -->
+            <video src="https://www.clawchampion.com/hero.mp4" autoplay muted loop playsinline></video>
+            <div class="video-badge">Live Moments • <b>Real Drops</b> • Pure Arcade</div>
+          </div>
+
+          <div class="side-cards">
+            <div class="mini-card">
+              <strong>Real competition</strong>
+              <p>Rankings, goals, and progress-driven rewards. Improve skill and climb.</p>
             </div>
-
-            <ul class="bullets">
-              <li>Real hardware with live camera view</li>
-              <li>Coin pushers & arcade games included</li>
-              <li>Fast onboarding, easy download</li>
-            </ul>
-
-            <div class="media-slot" aria-label="Hero highlight video">
-              <div class="media-badge">Highlight</div>
-              <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/2.jpg">
-                <source src="/hero.mp4" type="video/mp4" />
-              </video>
-            </div>
-
-            <div class="micro">
-              No physical prizes. Pure entertainment.
+            <div class="mini-card">
+              <strong>Built for trust</strong>
+              <p>Clear support flow: AI bot + human WhatsApp help.</p>
             </div>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Proof / Social proof -->
-    <section class="proof">
-      <div class="container proof-grid">
-        <div class="proof-item">
-          <div class="proof-kpi">24/7</div>
-          <div class="proof-label">Ops & Fault Support</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-kpi">Real</div>
-          <div class="proof-label">Hardware + Live View</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-kpi">JP</div>
-          <div class="proof-label">Rewards & Moments</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-kpi">Fast</div>
-          <div class="proof-label">Onboarding & Download</div>
         </div>
       </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Features</h2>
-          <p>Designed for fast fun and fair skill play</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Real-time Control</h3>
-            <p>Play with live camera view and responsive controls built for mobile.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">🪙</div>
-            <h3>Coin Pusher Thrills</h3>
-            <p>Classic arcade coin pusher gameplay with JP rewards and full-board moments.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">🎮</div>
-            <h3>More Arcade Games</h3>
-            <p>Enter different arcade rooms—each with unique rules and fun.</p>
-          </div>
-        </div>
-
-        <div class="grid-3 grid-3-secondary">
-          <div class="card soft">
-            <div class="card-icon">👤</div>
-            <h3>Flexible Login</h3>
-            <p>Guest Login, Gmail registration, and social login options.</p>
-          </div>
-          <div class="card soft">
-            <div class="card-icon">🛠️</div>
-            <h3>Fault Button</h3>
-            <p>Tap “Fault” in-room for issues. Our ops team responds quickly.</p>
-          </div>
-          <div class="card soft">
-            <div class="card-icon">🏆</div>
-            <h3>Events & Rewards</h3>
-            <p>Join events and community activities for extra play opportunities.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Screenshots -->
-    <section id="screenshots" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Gameplay Screenshots</h2>
-          <p>See ClawChampion in action</p>
-        </div>
-
-        <div class="shots">
-          <div class="shot">
-            <div class="label">Coin Pushers</div>
-            <img src="/5.jpg" alt="Coin pusher rooms" />
-          </div>
-          <div class="shot">
-            <div class="label">Main Page</div>
-            <img src="/8.jpg" alt="Main page" />
-          </div>
-          <div class="shot">
-            <div class="label">Arcade</div>
-            <img src="/2.jpg" alt="Arcade gameplay" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ (8 items) -->
-    <section id="faq" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>FAQ</h2>
-          <p>Quick answers</p>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>How do I log in?</summary>
-            <div class="faq-body">You can log in via Guest Login, Gmail Email Registration, or Social Account Login.</div>
-          </details>
-
-          <details>
-            <summary>How do I play the coin pusher?</summary>
-            <div class="faq-body">Insert coins to push. Dropped coins are added to your GP balance, with chances to trigger JP or full-board moments.</div>
-          </details>
-
-          <details>
-            <summary>How do I play other arcade games?</summary>
-            <div class="faq-body">Enter an arcade room and follow the on-screen instructions. Each room has different rules and controls.</div>
-          </details>
-
-          <details>
-            <summary>How can I edit or delete my account?</summary>
-            <div class="faq-body">Go to “My” (bottom tab) in the app to edit profile. Account deletion requests are handled there as well.</div>
-          </details>
-
-          <details>
-            <summary>Can’t log in. What should I do?</summary>
-            <div class="faq-body">Check your network, update the app, and try reinstalling. If it continues, contact customerservice@clawchampion.com with screenshots.</div>
-          </details>
-
-          <details>
-            <summary>In-game issues (lag / no response / stuck)?</summary>
-            <div class="faq-body">Tap the in-room “Fault” button. Our ops team is online 24/7. Provide screenshots/videos if you need verification.</div>
-          </details>
-
-          <details>
-            <summary>How do I get GP? What is it used for?</summary>
-            <div class="faq-body">New users may receive GP. GP is used for gameplay and rewards. Events and community activities can also provide extra GP opportunities.</div>
-          </details>
-
-          <details>
-            <summary>Recharge not credited — what should I do?</summary>
-            <div class="faq-body">Email customerservice@clawchampion.com with your payment screenshot and game ID for verification.</div>
-          </details>
-        </div>
-
-        <div class="fine-note">
-          Important: ClawChampion is pure entertainment. No physical prizes, shipping or logistics services are provided.
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-      <div class="container final-cta-inner">
-        <div>
-          <h2>Ready to play?</h2>
-          <p>Download ClawChampion and start pushing coins today.</p>
-        </div>
-        <div class="final-cta-buttons">
-          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
-          <a class="btn" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-left">
-        <div class="footer-brand">
-          <img src="/logo.jpg" alt="ClawChampion" />
-          <div>
-            <div class="footer-name">ClawChampion</div>
-            <div class="fine">Play the Arcade. Become the Champion.</div>
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Why ClawChampion</h2>
+        <p>Arcade energy, modern UX.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="feature">
+          <div class="icon">⚡</div>
+          <strong>Instant thrills</strong>
+          <p>Fast action loops designed for satisfying drops, jackpots, and momentum.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🏆</div>
+          <strong>Champion mindset</strong>
+          <p>Progress-driven play that rewards learning, consistency, and smart decisions.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🛡️</div>
+          <strong>Support you can trust</strong>
+          <p>AI bot for quick answers + WhatsApp for human help when you need it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>How it works</h2>
+        <p>Simple steps to start playing.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="feature">
+          <div class="icon">1</div>
+          <strong>Download</strong>
+          <p>Install from Google Play or the App Store.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">2</div>
+          <strong>Get GP</strong>
+          <p>Use GP to play coin pushers and arcade games, and unlock rewards.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">3</div>
+          <strong>Play + improve</strong>
+          <p>Learn patterns, reduce mistakes, and chase the big moments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>FAQ</h2>
+        <p>Fast answers. Clear rules.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>
+            How do I log in to ClawChampion?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            You can log in via Guest Login, Gmail Email Registration Login, or Social Account Login.
+            Using a frequently used email is recommended to receive important announcements and activity updates.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            How do I play the coin pusher?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            After inserting coins, push forward to drop more coins. Dropped coins are added directly to your GP balance,
+            with chances to win JP Rewards or Full-board Rewards.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            How do I play arcade games?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            Enter an arcade room and follow the room instructions. Each game has unique mechanics. Read the instructions before starting.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            Unable to log in — what should I do?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            Check your network and ensure you have the latest version installed. If issues persist, try reinstalling the app.
+            For help, contact: customerservice@clawchampion.com
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            In-game controls or lag issues?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            If coin pushing doesn’t respond, buttons are missing, or you see lag, use the in-room Fault button.
+            If you believe there is GP loss due to issues, provide screenshots/videos to customer service for verification.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            Display issues (black screen / missing visuals)?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            Try restarting the room or the app. If it continues, contact support with screenshots or recordings.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            How do I get GP?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            New users get GP on first login, you can earn GP by inviting friends, and you can also obtain more via recharge.
+            Occasional events may offer GP benefits.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            Are there physical prizes and shipping?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            ClawChampion is a pure entertainment game. No physical prizes, shipping, or logistics services are provided.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <div class="logo" aria-hidden="true" style="width:36px;height:36px;border-radius:12px;"></div>
+            <div>
+              <div style="font-weight:900;">ClawChampion</div>
+              <div class="small">Play the Arcade. Become the Champion.</div>
+            </div>
+          </div>
+
+          <div class="small">
+            Customer service email: <a href="mailto:customerservice@clawchampion.com">customerservice@clawchampion.com</a><br/>
+            WhatsApp Live Support: <a href="https://wa.me/8615140565877" target="_blank" rel="noopener">+86 151 4056 5877</a>
           </div>
         </div>
 
-        <div class="fine footer-support">
-          Support: <b>customerservice@clawchampion.com</b>
-        </div>
-
-        <div class="fine">© <span id="year"></span> ClawChampion. All rights reserved.</div>
-      </div>
-
-      <div class="footer-right">
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/robots.txt">Robots</a>
-          <a href="/sitemap.xml">Sitemap</a>
-          <a href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+        <div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+            <a class="pill" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
+            <a class="pill" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
+            <a class="pill primary" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+          </div>
+          <div class="small" style="text-align:right; margin-top:10px;">
+            © <span id="year"></span> ClawChampion. All rights reserved.
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="/script.js?v=20260224-2"></script>
+  <!-- Floating WhatsApp -->
+  <div class="wa-float" aria-label="WhatsApp support">
+    <div class="wa-sub">Human support on WhatsApp</div>
+    <a class="wa-btn" href="https://wa.me/8615140565877" target="_blank" rel="noopener">
+      <span class="wa-dot" aria-hidden="true"></span>
+      WhatsApp Live Support: +86 151 4056 5877
+    </a>
+  </div>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger?.addEventListener('click', () => {
+      const open = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = open ? 'none' : 'block';
+      burger.textContent = open ? '☰' : '✕';
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Chatbase Support Bot (replace chatbotId) -->
+  <script>
+    window.chatbaseConfig = {
+      chatbotId: "3r8Hg4XBUHdbyAxfg2u59"
+    };
+  </script>
+  <script src="https://www.chatbase.co/embed.min.js" defer></script>
 </body>
 </html>
