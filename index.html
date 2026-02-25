@@ -878,18 +878,31 @@ iframe[src*="chatbase.co"],
 
     supportClose?.addEventListener('click', () => setPanel(false));
 
-    // Open Chatbase widget (best-effort)
     openChatbase?.addEventListener('click', (e) => {
-      e.preventDefault();
-      try {
-        if (window.chatbase) {
-          // Different versions may support different commands
-          window.chatbase('open');
-          window.chatbase('show');
-          window.chatbase('toggle');
-        }
-      } catch (_) {}
-      setPanel(false);
+  e.preventDefault();
+
+  // close our panel first, then open chat
+  setPanel(false);
+
+  // Try to open Chatbase (some versions need a short delay)
+  setTimeout(() => {
+    try {
+      if (window.chatbase) {
+        window.chatbase('open');
+        window.chatbase('show');
+      }
+    } catch (_) {}
+
+    // Fallback: try clicking any chatbase launcher if present (even if hidden)
+    const btn =
+      document.querySelector('#chatbase-bubble-button') ||
+      document.querySelector('#chatbase-bubble') ||
+      document.querySelector('.chatbase-launcher') ||
+      document.querySelector('.chatbase-bubble');
+
+    if (btn) btn.click();
+  }, 120);
+});
       // If Chatbase still doesn't pop (some accounts lock programmatic open),
       // user can still open via Support again or we can switch to a dedicated /help page embed.
     });
