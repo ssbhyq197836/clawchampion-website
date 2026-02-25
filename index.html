@@ -838,15 +838,7 @@
   </footer>
 
   <!-- Floating WhatsApp -->
-  <div class="wa-float" aria-label="WhatsApp support">
-    <div class="wa-sub">Human support on WhatsApp</div>
-    <a class="wa-btn" href="https://wa.me/8615140565877" target="_blank" rel="noopener">
-      <span class="wa-dot" aria-hidden="true"></span>
-      WhatsApp Live Support: +86 151 4056 5877
-    </a>
-  </div>
-
-  <script>
+    <script>
     // Mobile menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -859,10 +851,72 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<script>
+  // Support Hub toggle
+  const supportFab = document.getElementById('supportFab');
+  const supportPanel = document.getElementById('supportPanel');
+  const supportClose = document.getElementById('supportClose');
+  const openChatbase = document.getElementById('openChatbase');
 
+  function setPanel(open){
+    supportPanel.classList.toggle('open', open);
+  }
+
+  supportFab?.addEventListener('click', () => {
+    const isOpen = supportPanel.classList.contains('open');
+    setPanel(!isOpen);
+  });
+
+  supportClose?.addEventListener('click', () => setPanel(false));
+
+  // Open Chatbase widget (best-effort)
+  openChatbase?.addEventListener('click', (e) => {
+    e.preventDefault();
+    try {
+      if (window.chatbase) {
+        window.chatbase('open');
+        window.chatbase('show');
+      }
+    } catch (_) {}
+    setPanel(false);
+  });
+</script>
   <!-- Chatbase Support Bot (replace chatbotId) -->
   <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="3r8Hg4XBUHdbyAxfg2u59";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
+  <!-- Support Hub (Floating) -->
+<div class="support-hub" aria-label="Support Hub">
+  <div class="support-hub__hint">Need help? Tap Support</div>
+
+  <div class="support-hub__panel" id="supportPanel">
+    <div class="support-hub__header">
+      <strong>Support</strong>
+      <button class="support-hub__close" id="supportClose" aria-label="Close">✕</button>
+    </div>
+    <div class="support-hub__body">
+      <a class="support-hub__btn" href="#" id="openChatbase">
+        <span class="support-hub__dot" aria-hidden="true"></span>
+        <div>
+          Chat with AI Support
+          <small>Fast answers for common questions</small>
+        </div>
+      </a>
+
+      <a class="support-hub__btn" href="https://wa.me/8615140565877" target="_blank" rel="noopener">
+        <span class="support-hub__dot wa" aria-hidden="true"></span>
+        <div>
+          WhatsApp Human Support
+          <small>+86 151 4056 5877</small>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <button class="support-hub__fab" id="supportFab" aria-label="Open Support">
+    <span class="support-hub__dot" aria-hidden="true"></span>
+    Support
+  </button>
+</div>
 </body>
 </html>
