@@ -861,56 +861,48 @@ iframe[src*="chatbase.co"],
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Support Hub toggle
-    const supportFab = document.getElementById('supportFab');
-    const supportPanel = document.getElementById('supportPanel');
-    const supportClose = document.getElementById('supportClose');
-    const openChatbase = document.getElementById('openChatbase');
-
-    function setPanel(open){
-      supportPanel.classList.toggle('open', open);
-    }
-
-    supportFab?.addEventListener('click', () => {
-      const isOpen = supportPanel.classList.contains('open');
-      setPanel(!isOpen);
-    });
-
-    supportClose?.addEventListener('click', () => setPanel(false));
-
-    openChatbase?.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  // close our panel first, then open chat
-  setPanel(false);
-
-  // Try to open Chatbase (some versions need a short delay)
-  setTimeout(() => {
-    try {
-      if (window.chatbase) {
-        window.chatbase('open');
-        window.chatbase('show');
-      }
-    } catch (_) {}
-
-    // Fallback: try clicking any chatbase launcher if present (even if hidden)
-    const btn =
-      document.querySelector('#chatbase-bubble-button') ||
-      document.querySelector('#chatbase-bubble') ||
-      document.querySelector('.chatbase-launcher') ||
-      document.querySelector('.chatbase-bubble');
-
-    if (btn) btn.click();
-  }, 120);
-});
-      // If Chatbase still doesn't pop (some accounts lock programmatic open),
-      // user can still open via Support again or we can switch to a dedicated /help page embed.
-    });
-  </script>
-
+    </script>
   <!-- Chatbase embed (ONLY ONE copy) -->
   <script>
   (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="3r8Hg4XBUHdbyAxfg2u59";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
   </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  var supportFab = document.getElementById("supportFab");
+  var supportPanel = document.getElementById("supportPanel");
+  var supportClose = document.getElementById("supportClose");
+  var openChatbase = document.getElementById("openChatbase");
+
+  if (supportFab && supportPanel) {
+    supportFab.addEventListener("click", function(){
+      supportPanel.classList.toggle("open");
+    });
+  }
+
+  if (supportClose && supportPanel) {
+    supportClose.addEventListener("click", function(){
+      supportPanel.classList.remove("open");
+    });
+  }
+
+  if (openChatbase && supportPanel) {
+    openChatbase.addEventListener("click", function(e){
+      e.preventDefault();
+      supportPanel.classList.remove("open");
+
+      setTimeout(function(){
+        try{
+          if(window.chatbase){
+            window.chatbase("open");
+            window.chatbase("show");
+          }
+        }catch(e){}
+      }, 150);
+    });
+  }
+
+});
+</script>
 </body>
 </html>
