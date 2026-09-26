@@ -6,14 +6,14 @@ This folder contains the static website for **ClawChampion**.
 
 - `index.html` home, app links and FAQ
 - `how-it-works.html` and `real-vs-virtual.html` product explanations
-- `real-machines.mp4` recorded product footage; `hero.mp4` retained as the previous source video
+- `real-machines.mp4` recorded product footage; the previous `hero.mp4` was removed from the published tree after a non-product casino segment was found, and remains recoverable from Git history
 - `privacy.html` and `terms.html` are still public templates, not reviewed legal documents
 - `robots.txt` and `sitemap.xml`
 - Root-level logo and screenshots
 
 ## Open content review
 
-The store-linked privacy policy discusses shipping information, while the previous homepage FAQ said that no physical shipping exists. That FAQ is removed pending a current product/legal decision. Do not publish a rewards or shipping answer from this repository until the app rules and policies agree. Replace the public Privacy/Terms templates with approved documents and fixed revision dates.
+The general manager confirmed on 2026-09-26 that earlier versions shipped physical prizes but current gameplay no longer does, and that current GP cannot be exchanged for cash or physical prizes. The store-linked privacy policy still discusses shipping information and needs an approved update. Do not infer older-order fulfillment or other reward rules from either text. Replace the public Privacy/Terms templates with approved documents and fixed revision dates.
 
 ## Deploy options
 
