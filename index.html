@@ -13,8 +13,28 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ClawChampion — Play the Arcade. Become the Champion.</title>
-  <meta name="description" content="Real arcade thrills on your phone: coin pushers, claw machines, and arcade games. Play the Arcade. Become the Champion." />
+  <title>ClawChampion | Real Remote Coin Pushers and Claw Machines</title>
+  <meta name="description" content="ClawChampion is a live remote arcade app. Control real coin pushers and claw machines from your phone while watching the physical machines on live video." />
+  <link rel="canonical" href="https://www.clawchampion.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ClawChampion | Real Remote Arcade" />
+  <meta property="og:description" content="Control real coin pushers and claw machines remotely through live video." />
+  <meta property="og:url" content="https://www.clawchampion.com/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ClawChampion",
+    "legalName": "Hong Kong Catcher Technology Co., Limited",
+    "url": "https://www.clawchampion.com/",
+    "logo": "https://www.clawchampion.com/logo.jpg",
+    "sameAs": [
+      "https://apps.apple.com/us/app/clawchampion-coin-pusher/id6463124814",
+      "https://play.google.com/store/apps/details?id=com.clawchampion.cc",
+      "https://discord.gg/TbnewwnT8A"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -176,8 +196,9 @@
       margin:14px 0 10px;
       font-size:44px;
       line-height:1.05;
-      letter-spacing:-.6px;
+      letter-spacing:0;
     }
+    .hero-kicker{font-size:20px; font-weight:700; margin:0 0 14px; color:var(--n2)}
     .grad{
       background: linear-gradient(90deg, var(--n2), var(--n1) 45%, var(--n3));
       -webkit-background-clip:text;
@@ -593,7 +614,8 @@ div[aria-live="assertive"]{
 
         <nav class="menu" aria-label="Primary">
           <a href="#features">Features</a>
-          <a href="#how">How it works</a>
+          <a href="/how-it-works.html">Real machines</a>
+          <a href="/real-vs-virtual.html">Real vs virtual</a>
           <a href="#faq">FAQ</a>
           <a href="#support">Support</a>
         </nav>
@@ -608,7 +630,8 @@ div[aria-live="assertive"]{
 
       <div class="mobile" id="mobileMenu" style="display:none;">
         <a href="#features">Features</a>
-        <a href="#how">How it works</a>
+        <a href="/how-it-works.html">Real machines</a>
+        <a href="/real-vs-virtual.html">Real vs virtual</a>
         <a href="#faq">FAQ</a>
         <a href="#support">Support</a>
         <a href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Join Discord</a>
@@ -622,28 +645,21 @@ div[aria-live="assertive"]{
     <div class="wrap">
       <div class="hero-grid">
         <div class="card hero-left" id="download">
-          <span class="tag"><i></i> 24/7 AI + WhatsApp Support</span>
+          <span class="tag"><i></i> Real machines. Live video. Remote control.</span>
 
-          <h1>
-            Play the Arcade.<br/>
-            <span class="grad">Become the Champion.</span>
-          </h1>
+          <h1><span class="grad">ClawChampion</span></h1>
+          <p class="hero-kicker">Real arcade machines, remotely controlled.</p>
 
           <p class="sub">
-            <div style="margin-top:12px;font-size:14px;color:#AEE9FF;">
-  ✔ Real arcade gameplay  
-  ✔ Competitive ranking system  
-  ✔ Instant AI + Human support
-</div>
-            ClawChampion brings authentic arcade thrills to your phone — coin pushers, claw machines,
-            and arcade games — designed for competition, skill, and unforgettable jackpot moments.
+            ClawChampion is a live remote arcade app. Use your phone to control physical coin pushers and claw machines while watching the machines through live video.
           </p>
+          <p class="sub">Explore live rooms, follow each machine's instructions, and track your in-app GP and Champion progress.</p>
 
           <div class="cta-row">
             <a class="btn primary dl" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">
     Download Free on Google Play →
 </a>
-<a class="btn dl" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">
+<a class="btn dl" href="https://apps.apple.com/us/app/clawchampion-coin-pusher/id6463124814" target="_blank" rel="noopener">
   Download Free on App Store →
 </a>
 
@@ -664,22 +680,22 @@ div[aria-live="assertive"]{
 </div>
           <!-- Invitation removed; keep only one trust line -->
           <div class="mini">
-            <span>Fast answers • Clear rules • Real-time help</span>
+            <span>Physical machines • Live rooms • In-app GP</span>
           </div>
         </div>
 
         <div class="card hero-right">
           <div class="video-shell" aria-label="ClawChampion hero video">
-            <video src="https://www.clawchampion.com/hero.mp4" autoplay muted loop playsinline></video>
+            <video src="/real-machines.mp4" autoplay muted loop playsinline preload="metadata"></video>
             <div class="video-badge">Live Moments • <b>Real Drops</b> • Pure Arcade</div>
           </div>
 <div style="margin-top:10px;font-size:13px;color:#FFD84D;font-weight:600;">
-  ✔ Real gameplay footage. No simulation.
+  Footage of physical machines and remote play.
 </div>
           <div class="side-cards">
             <div class="mini-card">
               <strong>Real competition</strong>
-              <p>Rankings, goals, and progress-driven rewards. Improve skill and climb.</p>
+              <p>Follow in-app goals and rankings as you play.</p>
             </div>
             <div class="mini-card">
               <strong>Built for trust</strong>
@@ -702,18 +718,18 @@ div[aria-live="assertive"]{
       <div class="grid3">
         <div class="feature">
           <div class="icon">⚡</div>
-          <strong>Instant thrills</strong>
-          <p>Fast action loops designed for satisfying drops, jackpots, and momentum.</p>
+          <strong>Real machine control</strong>
+          <p>Watch real machine movement and make each control decision from your phone.</p>
         </div>
         <div class="feature">
           <div class="icon">🏆</div>
           <strong>Champion mindset</strong>
-          <p>Progress-driven play that rewards learning, consistency, and smart decisions.</p>
+          <p>Track your in-app progress and compare your results.</p>
         </div>
         <div class="feature">
           <div class="icon">🛡️</div>
-          <strong>Support you can trust</strong>
-          <p>AI bot for quick answers + WhatsApp for human help when you need it.</p>
+          <strong>Help when something goes wrong</strong>
+          <p>Use in-app help or contact customer service with the room and time of the issue.</p>
         </div>
       </div>
     </div>
@@ -724,7 +740,7 @@ div[aria-live="assertive"]{
     <div class="wrap">
       <div class="section-title">
         <h2>How it works</h2>
-        <p>Simple steps to start playing.</p>
+        <p>A phone connects you to a physical arcade machine through live video.</p>
       </div>
 
       <div class="grid3">
@@ -735,13 +751,13 @@ div[aria-live="assertive"]{
         </div>
         <div class="feature">
           <div class="icon">2</div>
-          <strong>Get GP</strong>
-          <p>Use GP to play coin pushers and arcade games, and unlock rewards.</p>
+          <strong>Check each room</strong>
+          <p>Review the current room instructions and GP cost in the app before playing.</p>
         </div>
         <div class="feature">
           <div class="icon">3</div>
           <strong>Play + improve</strong>
-          <p>Learn patterns, reduce mistakes, and chase the big moments.</p>
+          <p>Watch the live machine feed, use the room controls, and track your in-app progress. <a href="/how-it-works.html">See how real remote play works</a>.</p>
         </div>
       </div>
     </div>
@@ -756,6 +772,15 @@ div[aria-live="assertive"]{
       </div>
 
       <div class="faq">
+        <details>
+          <summary>
+            Are ClawChampion's coin pushers real machines?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="ans">
+            Yes. Your phone sends controls to physical arcade machines, and the live room video shows the machine. The app may add digital interface elements. <a href="/real-vs-virtual.html">Learn how this differs from a virtual coin pusher</a>.
+          </div>
+        </details>
         <details>
           <summary>
             How do I log in to ClawChampion?
@@ -823,19 +848,10 @@ div[aria-live="assertive"]{
             <span class="chev">⌄</span>
           </summary>
           <div class="ans">
-            New users get GP on first login. You can also get GP via invite rewards, recharge, and occasional events.
+            GP is the in-app play unit. Check the current app for ways to obtain GP, prices, and any available promotions.
           </div>
         </details>
 
-        <details>
-          <summary>
-            Are there physical prizes and shipping?
-            <span class="chev">⌄</span>
-          </summary>
-          <div class="ans">
-            ClawChampion is a pure entertainment game. No physical prizes, shipping, or logistics services are provided.
-          </div>
-        </details>
       </div>
     </div>
   </section>
@@ -857,13 +873,17 @@ div[aria-live="assertive"]{
             Customer service email: <a href="mailto:customerservice@clawchampion.com">customerservice@clawchampion.com</a><br/>
             WhatsApp Support: <a href="https://wa.me/8615140565877" target="_blank" rel="noopener">Chat on WhatsApp</a>
           </div>
+          <div class="small">App Store seller: Hong Kong Catcher Technology Co., Limited</div>
         </div>
 
         <div>
           <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
             <a class="pill" href="https://play.google.com/store/apps/details?id=com.clawchampion.cc" target="_blank" rel="noopener">Google Play</a>
-            <a class="pill" href="https://apps.apple.com/us/app/claw-champion/id6463124814?l=zh-Hans-CN" target="_blank" rel="noopener">App Store</a>
+            <a class="pill" href="https://apps.apple.com/us/app/clawchampion-coin-pusher/id6463124814" target="_blank" rel="noopener">App Store</a>
             <a class="pill primary" href="https://discord.gg/TbnewwnT8A" target="_blank" rel="noopener">Discord</a>
+          </div>
+          <div class="small" style="text-align:right; margin-top:10px;">
+            <a href="/how-it-works.html">Real remote arcade</a> · <a href="/real-vs-virtual.html">Real vs virtual</a>
           </div>
           <div class="small" style="text-align:right; margin-top:10px;">
             © <span id="year"></span> ClawChampion. All rights reserved.
