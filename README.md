@@ -7,13 +7,14 @@ This folder contains the static website for **ClawChampion**.
 - `index.html` home, app links and FAQ
 - `how-it-works.html` and `real-vs-virtual.html` product explanations
 - `real-machines.mp4` recorded product footage; `hero.mp4` is a compatibility copy of the same verified clip so old media links no longer point to the previous non-product casino segment (the original remains recoverable from Git history)
-- `privacy.html` and `terms.html` are still public templates, not reviewed legal documents
+- `privacy.html` is the dated website privacy policy; `terms.html` is the dated website terms page
+- `legal.css` styles the public legal pages
 - `robots.txt` and `sitemap.xml`
 - Root-level logo and screenshots
 
 ## Open content review
 
-The general manager confirmed on 2026-09-26 that earlier versions shipped physical prizes but current gameplay no longer does, and that current GP cannot be exchanged for cash or physical prizes. The store-linked privacy policy still discusses shipping information and needs an approved update. Do not infer older-order fulfillment or other reward rules from either text. Replace the public Privacy/Terms templates with approved documents and fixed revision dates.
+The general manager confirmed on 2026-09-26 that earlier versions shipped physical prizes but current gameplay no longer does, and that current GP cannot be exchanged for cash or physical prizes. On 2026-09-27 the general manager authorized replacement of the website Privacy/Terms templates. These new pages are website-scoped, use a fixed revision date, and do not replace the separate privacy policy linked from the App stores or the App's in-App service agreement. The store-linked policy still discusses shipping addresses and needs a separate current-App data-flow check and update. The in-App service-agreement URL `https://dwz-prod.clawchampion.com/explain/0.html` did not resolve on the checked Android build 2.0.32; fixing the website Terms alone does not repair that App link. Do not infer older-order fulfillment or other reward rules from these pages.
 
 ## Deploy options
 
