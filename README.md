@@ -6,7 +6,7 @@ This folder contains the static website for **ClawChampion**.
 
 - `index.html` home, app links and FAQ
 - `how-it-works.html` and `real-vs-virtual.html` product explanations
-- `real-machines.mp4` recorded product footage; the previous `hero.mp4` was removed from the published tree after a non-product casino segment was found, and remains recoverable from Git history
+- `real-machines.mp4` recorded product footage; `hero.mp4` is a compatibility copy of the same verified clip so old media links no longer point to the previous non-product casino segment (the original remains recoverable from Git history)
 - `privacy.html` and `terms.html` are still public templates, not reviewed legal documents
 - `robots.txt` and `sitemap.xml`
 - Root-level logo and screenshots
